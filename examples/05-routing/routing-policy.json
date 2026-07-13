@@ -15,8 +15,8 @@
     "repair": { "lane": "local-code", "fallback": "stop-after-three" }
   },
   "dataRules": {
-    "public": ["local-fast", "local-code", "local-reason", "cloud-strong"],
-    "internal": ["local-fast", "local-code", "local-reason"],
+    "public": ["deterministic", "local-fast", "local-code", "local-reason", "cloud-strong"],
+    "internal": ["deterministic", "local-fast", "local-code", "local-reason"],
     "restricted": ["deterministic"],
     "secret": []
   },
