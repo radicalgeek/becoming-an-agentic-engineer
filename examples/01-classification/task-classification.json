@@ -1,0 +1,15 @@
+{
+  "task": "Add input validation to POST /api/register",
+  "taskClass": "public-endpoint validation hardening",
+  "blastRadius": "medium",
+  "dataClass": "internal-source-synthetic-payloads-only",
+  "allowedTools": ["read repository", "edit src/accounts.js", "edit registration tests", "run npm scripts"],
+  "blockedTools": ["edit migrations", "edit login behaviour", "push main", "deploy", "use customer payloads"],
+  "verification": {
+    "deterministic": ["unit suite", "API contract suite", "login regression suite", "scope check", "secret scan"],
+    "judgement": ["spec ambiguity review", "product review findings"]
+  },
+  "authorityToday": "prepare a patch and evidence pack; human approves merge",
+  "targetAuthority": "gate set decides merge for the graduated task class",
+  "stopWhen": ["a migration is required", "login behaviour must change", "real customer data is required"]
+}

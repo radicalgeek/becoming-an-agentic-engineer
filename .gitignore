@@ -1,0 +1,5 @@
+node_modules/
+.course-output/*
+!.course-output/.gitkeep
+.DS_Store
+*.log

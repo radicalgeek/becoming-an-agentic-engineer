@@ -1,0 +1,10 @@
+{
+  "roles": [
+    { "name": "orchestrator", "purpose": "decompose and track", "allowed": ["read", "assign"], "blocked": ["edit", "merge"], "output": "bounded assignment" },
+    { "name": "implementer", "purpose": "produce the patch and draft evidence", "allowed": ["edit scoped worktree", "run tests"], "blocked": ["push main", "deploy", "edit migrations"], "output": "diff and evidence" },
+    { "name": "reviewer", "purpose": "judge the diff against the spec", "allowed": ["read", "run tests"], "blocked": ["edit", "push", "merge"], "output": "PASS or findings with reproduction" },
+    { "name": "merge-agent", "purpose": "run gates and issue readiness verdict", "allowed": ["read", "run gates", "merge on pass"], "blocked": ["feature edits", "spec changes", "gate bypass"], "output": "merge verdict and gate report" }
+  ],
+  "handoff": ["goal", "context pack", "diff", "evidence", "open questions"],
+  "workspace": { "implementer": "scoped worktree", "reviewer": "read-only checkout", "merge-agent": "integration checkout with merge permission" }
+}

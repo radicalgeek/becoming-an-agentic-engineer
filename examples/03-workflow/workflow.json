@@ -1,0 +1,8 @@
+{
+  "bundle": "reliable implementation",
+  "steps": ["read the spec and bounded context", "write failing behaviour tests", "implement the smallest change", "run deterministic checks", "repair failures", "build evidence pack", "fresh-context review"],
+  "deterministicBoundary": ["tests", "scope", "secrets", "performance"],
+  "judgementPoints": ["resolve spec ambiguity", "assess product-review findings"],
+  "repairLimit": 3,
+  "stopConditions": ["protected path touched", "spec contradiction", "three failed repair attempts"]
+}

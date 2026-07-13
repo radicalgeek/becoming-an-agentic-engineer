@@ -1,0 +1,10 @@
+{
+  "intent": "Reject malformed registration requests without changing login or the user record",
+  "expectedFiles": ["src/accounts.js", "tests/registration.test.js", "tests/api-contract.test.js"],
+  "risk": "medium blast radius; public endpoint; synthetic test data only",
+  "tests": ["npm run test:unit", "npm run test:contract", "npm run test:login", "npm run lint"],
+  "focusAreas": ["field-level 422 response", "valid registration response", "login regression", "no migration files"],
+  "knownGaps": ["in-memory example does not exercise a production database"],
+  "rollback": "revert the validation-only commit; no data rollback required",
+  "status": "planned"
+}

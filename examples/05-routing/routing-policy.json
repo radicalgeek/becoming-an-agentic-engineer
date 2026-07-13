@@ -1,0 +1,24 @@
+{
+  "lanes": {
+    "deterministic": "tests, linters and policy checks; no model",
+    "local-fast": "classification, extraction and formatting",
+    "local-code": "bounded implementation and repair",
+    "local-reason": "planning when the context is private and complex",
+    "cloud-strong": "approved high-complexity reasoning on non-restricted context"
+  },
+  "rules": {
+    "classify": { "lane": "local-fast", "fallback": "local-reason" },
+    "plan": { "lane": "local-reason", "fallback": "cloud-strong" },
+    "implement": { "lane": "local-code", "fallback": "cloud-strong" },
+    "verify": { "lane": "deterministic", "fallback": "stop" },
+    "review": { "lane": "local-reason", "fallback": "cloud-strong" },
+    "repair": { "lane": "local-code", "fallback": "stop-after-three" }
+  },
+  "dataRules": {
+    "public": ["local-fast", "local-code", "local-reason", "cloud-strong"],
+    "internal": ["local-fast", "local-code", "local-reason"],
+    "restricted": ["deterministic"],
+    "secret": []
+  },
+  "logFields": ["step", "lane", "reason", "dataClass", "fallback", "outcome"]
+}

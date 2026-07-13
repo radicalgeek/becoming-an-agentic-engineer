@@ -1,0 +1,11 @@
+{
+  "goal": "Implement spec/registration-validation.md",
+  "nonGoals": ["change login", "change dependencies", "change the user record", "add a database"],
+  "inspectFirst": ["spec/registration-validation.md", "src/accounts.js", "tests/registration.test.js", "tests/login-regression.test.js"],
+  "allowedTools": ["repository read", "scoped file edits", "npm test", "npm run lint"],
+  "blockedTools": ["network access", "deployment credentials", "writes outside src/accounts.js and registration tests"],
+  "verificationCommands": ["npm run test:unit", "npm run test:contract", "npm run test:login", "npm run lint"],
+  "evidenceExpected": ["exact commands", "exit status", "tests passed", "files changed", "known gaps"],
+  "excluded": [".git", "node_modules", ".course-output", "chat transcripts", "customer data", "secrets"],
+  "openQuestions": []
+}

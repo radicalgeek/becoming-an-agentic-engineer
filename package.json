@@ -1,0 +1,31 @@
+{
+  "name": "becoming-an-agentic-engineer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Runnable companion repository for the Radical Geek course Becoming an Agentic Engineer",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "test:unit": "node --test tests/registration.test.js",
+    "test:contract": "node --test tests/api-contract.test.js",
+    "test:login": "node --test tests/login-regression.test.js",
+    "lint": "node --check src/accounts.js && node --check src/server.js",
+    "example:classify": "node scripts/show-example.js examples/01-classification/task-classification.json",
+    "example:context": "node scripts/show-example.js examples/02-context/context-pack.json",
+    "example:workflow": "node scripts/show-example.js examples/03-workflow/workflow.json",
+    "example:evidence": "node scripts/build-evidence-pack.js",
+    "example:route": "node scripts/route-task.js",
+    "example:team": "node scripts/run-role-workflow.js",
+    "gate": "node scripts/run-gates.js",
+    "review:product": "node scripts/product-review.js",
+    "verify:course": "node scripts/verify-course.js",
+    "check:scope": "node scripts/check-scope.js",
+    "check:secrets": "node scripts/check-secrets.js",
+    "check:performance": "node scripts/check-performance.js"
+  },
+  "license": "MIT"
+}

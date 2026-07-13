@@ -1,0 +1,18 @@
+{
+  "name": "public-endpoint-validation",
+  "version": 1,
+  "owner": "platform-team",
+  "taskClass": "validation and error-response changes to public endpoints",
+  "refuseWhen": ["migrations are touched", "login implementation is touched", "restricted data is required"],
+  "gates": [
+    { "id": "evidence-complete", "script": "example:evidence", "failureRoute": "stop" },
+    { "id": "unit-suite", "script": "test:unit", "failureRoute": "repair", "maxAttempts": 3 },
+    { "id": "contract-probe", "script": "test:contract", "failureRoute": "repair", "maxAttempts": 3 },
+    { "id": "login-regression", "script": "test:login", "failureRoute": "stop" },
+    { "id": "scope-freeze", "script": "check:scope", "failureRoute": "stop" },
+    { "id": "secret-scan", "script": "check:secrets", "failureRoute": "stop" },
+    { "id": "performance-budget", "script": "check:performance", "failureRoute": "repair", "maxAttempts": 2 }
+  ],
+  "promotion": { "minimumShadowRuns": 12, "gateHumanAgreement": 0.95, "maximumEscapedDefects": 0 },
+  "demotion": { "escapedDefects": 1, "gatePassRateBelow": 0.85, "windowRuns": 10 }
+}
