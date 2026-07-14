@@ -32,8 +32,8 @@ Then call `http://localhost:3000/api/register` or `http://localhost:3000/api/log
 | Module | What changes in the engineer's work | Runnable example |
 |---|---|---|
 | 1. Classify | Bound the work before delegating it | `npm run example:classify` |
-| 2. Context | Give the agent a finite working set | `npm run example:context` |
-| 3. Workflow | Select a delivery loop and stop conditions | `npm run example:workflow` |
+| 2. Context | Build a finite working set with direct context, RAG or recursive processing | `npm run example:context`, `npm run example:rag`, `npm run example:recursive-context` |
+| 3. Workflow | Select a delivery loop, including bounded Ralph iteration | `npm run example:workflow`, `npm run example:ralph` |
 | 4. Evidence | Define and collect proof of the change | `npm run example:evidence` |
 | 5. Routing | Route each step by capability, risk and data | `npm run example:route` |
 | 6. Multi-agent | Separate planning, implementation, review and merge | `npm run example:team` |
@@ -41,6 +41,10 @@ Then call `http://localhost:3000/api/register` or `http://localhost:3000/api/log
 | 8. Operate | Review the product and improve the system | `npm run review:product` |
 
 Each directory under `examples/` contains a completed reference artefact. The commands validate those artefacts rather than merely printing prose.
+
+The context examples make an important distinction. RAG retrieves a ranked source set for a question. Recursive context processing partitions a body that is too large to carry, inspects every partition, and aggregates source-linked findings. The Ralph example starts a new process per iteration, reads durable progress from disk, completes one item, and stops when executable checks prove the plan is complete.
+
+These three examples are deterministic teaching implementations. The RAG example uses lexical retrieval, the recursive example uses local worker functions, and the Ralph example uses fresh Node processes. They expose the control flow and evaluation points without requiring a paid model or vector database; those components can replace the local stages without changing the contracts being taught.
 
 ## What the gates prove
 

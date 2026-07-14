@@ -1,0 +1,14 @@
+{
+  "question": "Which files define registration behaviour, its public contract, and the login behaviour that must remain unchanged?",
+  "corpus": [
+    "spec/registration-validation.md",
+    "src/accounts.js",
+    "src/server.js",
+    "tests/registration.test.js",
+    "tests/api-contract.test.js",
+    "tests/login-regression.test.js"
+  ],
+  "maximumLeafCharacters": 1400,
+  "maximumDepth": 4,
+  "requiredFindings": ["registration", "contract", "login"]
+}

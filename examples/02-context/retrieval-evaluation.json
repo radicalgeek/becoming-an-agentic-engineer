@@ -1,0 +1,17 @@
+{
+  "queries": [
+    {
+      "query": "validateRegistration field errors",
+      "requiredSource": "src/accounts.js"
+    },
+    {
+      "query": "protected login behaviour",
+      "requiredSource": "spec/registration-validation.md"
+    },
+    {
+      "query": "existing credentials still log in",
+      "requiredSource": "tests/login-regression.test.js"
+    }
+  ],
+  "passCondition": "Every required source appears in the top three results"
+}

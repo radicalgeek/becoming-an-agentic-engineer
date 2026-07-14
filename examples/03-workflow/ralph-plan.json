@@ -1,0 +1,9 @@
+{
+  "goal": "Prove the registration change satisfies its specification without changing login behaviour",
+  "maximumIterations": 5,
+  "items": [
+    { "id": "spec", "description": "Confirm the registration specification exists", "check": "spec" },
+    { "id": "registration", "description": "Run the registration behaviour tests", "check": "test:unit" },
+    { "id": "login", "description": "Run the protected login regression tests", "check": "test:login" }
+  ]
+}
