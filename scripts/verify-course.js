@@ -7,6 +7,8 @@ const required = [
   "examples/02-context/retrieval-evaluation.json",
   "examples/02-context/recursive-task.json",
   "examples/03-workflow/workflow.json",
+  "examples/03-workflow/loop.json",
+  "examples/03-workflow/loop-work.json",
   "examples/03-workflow/ralph-plan.json",
   "examples/04-evidence/merge-readiness-plan.json",
   "examples/05-routing/routing-policy.json",
@@ -22,7 +24,7 @@ const gateSet = JSON.parse(await readFile("examples/07-gated-delivery/gate-set.j
 if (gateSet.gates.length !== 7) throw new Error("The reference gate set must contain seven gates");
 if (!gateSet.gates.every((gate) => gate.id && gate.script && gate.failureRoute)) throw new Error("Every gate needs an id, script and failure route");
 
-for (const script of ["example:classify", "example:context", "example:rag", "example:recursive-context", "example:workflow", "example:ralph", "example:route", "example:team"]) {
+for (const script of ["example:classify", "example:context", "example:rag", "example:recursive-context", "example:workflow", "loop:validate", "loop:simulate", "example:ralph", "example:route", "example:team"]) {
   const result = spawnSync("npm", ["run", "--silent", script], { encoding: "utf8" });
   if (result.status !== 0) throw new Error(`${script} failed: ${result.stderr}`);
 }

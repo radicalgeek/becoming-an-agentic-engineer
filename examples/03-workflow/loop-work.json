@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "id": "registration-behaviour", "command": "test:unit", "verificationLevel": "L1-deterministic" },
+    { "id": "public-contract", "command": "test:contract", "verificationLevel": "L1-deterministic" },
+    { "id": "protected-login", "command": "test:login", "verificationLevel": "L1-deterministic" }
+  ]
+}

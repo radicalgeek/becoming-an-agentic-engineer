@@ -1,0 +1,55 @@
+{
+  "id": "registration-validation-loop",
+  "trigger": {
+    "type": "manual-or-scheduled",
+    "command": "npm run loop:once",
+    "cadence": "on demand or daily while eligible work remains"
+  },
+  "workDiscovery": {
+    "source": "examples/03-workflow/loop-work.json",
+    "eligibility": "bounded registration checks only",
+    "selection": "first pending item",
+    "deduplicateBy": "id"
+  },
+  "goal": {
+    "specification": "spec/registration-validation.md",
+    "completeWhen": "every eligible work item has deterministic evidence"
+  },
+  "context": {
+    "required": ["spec/registration-validation.md", "examples/02-context/context-pack.json"],
+    "exclude": ["secrets", "unrelated branches", "unbounded logs"]
+  },
+  "isolation": {
+    "workspace": "one branch or worktree per writer",
+    "allowedPaths": ["src/accounts.js", "tests/registration.test.js", "tests/api-contract.test.js", "tests/login-regression.test.js"]
+  },
+  "architecture": {
+    "worker": "one fresh process executes one selected item",
+    "checker": "the selected deterministic command issues the verdict",
+    "makerCheckerSeparated": true
+  },
+  "verification": {
+    "minimumLevel": "L1-deterministic",
+    "ladder": ["L1-deterministic", "L2-rule", "L3-field", "L4-model-judge", "L5-human"]
+  },
+  "state": {
+    "path": ".course-output/loop/state.json",
+    "claimLease": ".course-output/loop/claim.lock",
+    "durableFields": ["item status", "iteration", "evidence", "terminal state"]
+  },
+  "progress": {
+    "unit": "one selected work item",
+    "retryRequiresOneOf": ["changed strategy", "new evidence"]
+  },
+  "budgets": {
+    "maximumIterations": 5,
+    "maximumMinutes": 10,
+    "maximumCostUsd": 1
+  },
+  "terminalStates": {
+    "complete": "all eligible items verified",
+    "blocked": "a deterministic check failed",
+    "budget_exceeded": "an iteration, time or cost limit ended the run",
+    "escalated": "scope, authority or specification requires human judgement"
+  }
+}
