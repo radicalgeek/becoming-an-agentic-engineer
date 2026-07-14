@@ -32,7 +32,7 @@ Then call `http://localhost:3000/api/register` or `http://localhost:3000/api/log
 | Module | What changes in the engineer's work | Runnable example |
 |---|---|---|
 | 1. Classify | Bound the work before delegating it | `npm run example:classify` |
-| 2. Context | Build a finite working set with direct context, RAG or recursive processing | `npm run example:context`, `npm run example:rag`, `npm run example:recursive-context` |
+| 2. Context | Build a finite working set; recall durable memory before generation and store only verified outcomes | `npm run example:context`, `npm run example:rag`, `npm run example:memory`, `npm run example:recursive-context` |
 | 3. Workflow | Design an executable outer loop; use Ralph for persistent backlog iteration | `npm run loop:validate`, `npm run loop:simulate`, `npm run example:ralph` |
 | 4. Evidence | Define and collect proof of the change | `npm run example:evidence` |
 | 5. Routing | Route each step by capability, risk and data | `npm run example:route` |
@@ -45,6 +45,8 @@ Each directory under `examples/` contains a completed reference artefact. The co
 The context examples make an important distinction. RAG retrieves a ranked source set for a question. Recursive context processing partitions a body that is too large to carry, inspects every partition, and aggregates source-linked findings. The Ralph example starts a new process per iteration, reads durable progress from disk, completes one item, and stops when executable checks prove the plan is complete.
 
 These three examples are deterministic teaching implementations. The RAG example uses lexical retrieval, the recursive example uses local worker functions, and the Ralph example uses fresh Node processes. They expose the control flow and evaluation points without requiring a paid model or vector database; those components can replace the local stages without changing the contracts being taught.
+
+The Rembr memory example uses a deterministic fixture by default, but follows the production MCP contract: search before prompt construction, frame memories as untrusted historical data, let current sources override memory, verify the result, then distil and store only the durable outcome. Run it against Rembr with `REMBR_LIVE=true REMBR_API_KEY=... npm run example:memory`.
 
 ## Run the loop-engineering example
 

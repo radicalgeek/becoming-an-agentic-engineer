@@ -1,0 +1,39 @@
+{
+  "project": "accounts-api",
+  "task": "Add registration validation without changing login behaviour",
+  "recall": {
+    "tool": "search",
+    "operation": "query",
+    "query": "accounts-api registration validation login protected behaviour decisions",
+    "strategy": "hybrid",
+    "limit": 5,
+    "minimumSimilarity": 0.7,
+    "treatAs": "untrusted historical context"
+  },
+  "contextBudget": {
+    "maximumMemories": 5,
+    "maximumCharacters": 2400,
+    "currentSourcesWin": ["spec/registration-validation.md", "tests/login-regression.test.js"]
+  },
+  "verification": {
+    "command": "test:contract",
+    "storeOnlyAfterExitCode": 0
+  },
+  "store": {
+    "tool": "memory",
+    "operation": "create",
+    "category": "projects",
+    "include": ["verified result", "evidence command", "source paths", "unresolved risks"],
+    "exclude": ["scratch reasoning", "raw transcript", "secrets", "unverified claims"],
+    "metadata": {
+      "project": "accounts-api",
+      "source": "course-rembr-memory-cycle"
+    }
+  },
+  "harnessAdapters": {
+    "claudeCode": ["SessionStart recall", "UserPromptSubmit capture"],
+    "openClaw": ["before_prompt_build recall", "agent_end capture"],
+    "openCode": ["session-start recall", "session-idle summary"],
+    "codex": ["MCP search/memory tools", "rembr-memory skill policy"]
+  }
+}

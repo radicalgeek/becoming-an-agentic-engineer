@@ -1,0 +1,22 @@
+{
+  "memories": [
+    {
+      "id": "mem-adr-014",
+      "content": "accounts-api validation errors use the documented problem-details response shape.",
+      "category": "decisions",
+      "metadata": { "project": "accounts-api", "source": "ADR-014", "verification": "approved" }
+    },
+    {
+      "id": "mem-login-protection",
+      "content": "Registration changes must preserve successful and unsuccessful login behaviour.",
+      "category": "facts",
+      "metadata": { "project": "accounts-api", "source": "login regression suite", "verification": "historical" }
+    },
+    {
+      "id": "mem-unrelated",
+      "content": "The reporting service exports monthly CSV files.",
+      "category": "facts",
+      "metadata": { "project": "reporting-api", "source": "README" }
+    }
+  ]
+}
